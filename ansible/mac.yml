@@ -1,0 +1,46 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Update Homebrew
+      homebrew: update_homebrew=yes
+
+    - name: Tap Caskroom
+      homebrew_tap: tap=homebrew/cask
+
+    - name: Tap bundle
+      homebrew_tap: tap=homebrew/bundle
+
+    - name: Update ansible
+      homebrew:
+        name: ansible
+        state: latest
+
+    - name: Install or Update mas
+      homebrew:
+        name: mas
+        state: latest
+
+    - name: Check dotfiles playbook
+      stat:
+        path: ~/dotfiles/osx/playbook.yml
+      register: dotfiles_playbook
+
+    - name: Install dotfiles
+      include_tasks: ~/dotfiles/osx/playbook.yml
+      when: dotfiles_playbook.stat.exists
+
+    - name: Check brew bundle dump
+      stat:
+        path: ~/dotfiles/osx/Brewfile
+      register: dotfiles_Brewfile
+
+    - name: Install OSX Apps from Brewfile https://github.com/Homebrew/homebrew-bundle
+      command: brew bundle --file ~/dotfiles/osx/Brewfile
+      args:
+        chdir: ~/dotfiles/osx/
+      when: dotfiles_Brewfile.stat.exists
+      register: result
+      changed_when:
+        - '"Installing" in result.stdout'
