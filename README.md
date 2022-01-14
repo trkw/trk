@@ -23,7 +23,7 @@ This script will install the following:
 - git clone this repository `~/.trk`
 - (Optional)git clone dotfiles repository `~/dotfiles`
 
-And run ansible-playbook [`~/.trkw/ansible/mac.yml`](https://github.com/trkw/trk/blob/main/ansible/mac.yml)
+And run ansible-playbook [`~/.trk/ansible/mac.yml`](https://github.com/trkw/trk/blob/main/ansible/mac.yml)
 
 - ~/.dash/ansible/mac.yml
   - Update Homebrew, ansible
