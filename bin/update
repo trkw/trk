@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [[ $(uname -m) == "arm64" ]]; then
+  export PATH="/opt/homebrew/bin:${PATH}" # arm64
+else
+  export PATH="/usr/local/homebrew/bin:${PATH}" # x86_64
+fi
+
 echo 'Update OSX setup tool trkw/trk'
 echo -e "\n"
 
