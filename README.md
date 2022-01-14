@@ -35,7 +35,7 @@ And run ansible-playbook [`~/.trk/ansible/mac.yml`](https://github.com/trkw/trk/
 
 It should run idempotently, meaning you should be able to run it as many times as you want and it won't hurt anything. If it fails due to a temporary condition (like network issues), running it again should pick up where it left off. If new items are added to the script, running it against a functioning environment should only add the new things.
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/trkw/trk/master/bin/bootstrap)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/trkw/trk/main/bin/bootstrap)"
 
 ### Update packages
 
