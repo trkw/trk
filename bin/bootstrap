@@ -15,9 +15,9 @@ export PATH=${HOMEBREW_PREFIX}/bin:${PATH}
 
 ## Install or Update Homebrew ##
 echo 'Installing or Updating Homebrew...'
-which -s brew
-if [[ $? != 0 ]] ; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+if test ! $(which brew); then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     brew update
 fi
