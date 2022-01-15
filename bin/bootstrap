@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
-if [[ $(uname -m) == "arm64" ]]; then
-  export PATH="/opt/homebrew/bin:${PATH}" # arm64
+# judge M1/Intel
+if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
+    echo "architecture: M1 Mac"
+    HOMEBREW_PREFIX="/opt/homebrew"
+    if [[ "${PRIVATE}" = "y" ]]; then
+        sudo softwareupdate --install-rosetta
+    fi
 else
-  export PATH="/usr/local/homebrew/bin:${PATH}" # x86_64
+    echo "architecture: Intel Mac"
+    HOMEBREW_PREFIX="/usr/local"
 fi
+export PATH=${HOMEBREW_PREFIX}/bin:${PATH}
 
 ## Install or Update Homebrew ##
 echo 'Installing or Updating Homebrew...'
