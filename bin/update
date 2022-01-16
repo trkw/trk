@@ -13,11 +13,11 @@ else
 fi
 export PATH=${HOMEBREW_PREFIX}/bin:${PATH}
 
-echo 'Update OSX setup tool trkw/trk'
+echo 'Update macOS setup tool trkw/trk'
 echo -e "\n"
 
 ## Check out a copy of this repo ##
-echo 'Checking out or Pull Dash repo...'
+echo 'Checking out or Pull trk repo...'
 git clone https://github.com/trkw/trk ~/.trk 2>/dev/null
 if [[ $? != 0 ]] ; then
     git -C ~/.trk pull
