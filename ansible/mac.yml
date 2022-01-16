@@ -1,16 +1,6 @@
 ---
 - hosts: 127.0.0.1
   connection: local
-  vars_prompt:
-  - name: op_email
-    prompt: What is your 1Password email?
-    private: no
-
-  - name: op_secret
-    prompt: What is your 1Password secret key?
-
-  - name: op_pass
-    prompt: What is your 1Password password?
   tasks:
     - name: Update Homebrew
       homebrew: update_homebrew=yes
@@ -53,18 +43,3 @@
       register: result
       changed_when:
         - '"Installing" in result.stdout'
-
-    - name: Update 1Password CLI tool
-      command: op update
-
-    - name: GitHub private key
-      copy:
-        dest: "~/.ssh/github-trkw"
-        content: "-----BEGIN OPENSSH PRIVATE KEY-----\n{{ lookup('community.general.onepassword', 'GitHub', field='private', subdomain='my', username=op_email, secret_key=op_secret, master_password=op_pass) | replace(' ', '\n') }}\n-----END OPENSSH PRIVATE KEY-----\n"
-        mode: 0600
-
-    - name: GitHub public key
-      copy:
-        dest: "~/.ssh/github-trkw.pub"
-        content: "{{ lookup('community.general.onepassword', 'GitHub', field='public', subdomain='my', username=op_email, secret_key=op_secret, master_password=op_pass) }}\n"
-        mode: 0640
