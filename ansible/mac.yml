@@ -16,6 +16,42 @@
         name: ansible
         state: latest
 
+    - name: asdf git clone
+      command: git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+      ignore_errors: yes
+      register: result
+
+    - git:
+      repo: https://github.com/asdf-vm/asdf.git
+      dest: "~/.asdf"
+      version: v0.9.0
+
+    - name: "Create a default asdf configuration"
+      template:
+        src: templates/.asdfrc.j2
+        dest: ~/.asdfrc
+        force: yes
+
+    - name: "Create a default asdf configuration"
+      template:
+        src: templates/.asdfrc.j2
+        dest: ~/.asdfrc
+        force: yes
+
+    - name: "Install asdf plugins"
+      shell: |
+        source ~/.asdf/asdf.sh
+        asdf plugin-add {{ item }} || exit 0
+      with_items:
+        - nodejs
+
+    - name: "Install default node"
+      shell: |
+        source ~/.asdf/asdf.sh
+        bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+        asdf install nodejs 16.4.2
+        asdf global nodejs 16.4.2
+
     - name: Install or Update mas
       homebrew:
         name: mas
