@@ -27,12 +27,6 @@
         dest: ~/.asdfrc
         force: yes
 
-    - name: "Create a default asdf configuration"
-      template:
-        src: templates/.asdfrc.j2
-        dest: ~/.asdfrc
-        force: yes
-
     - name: "Install asdf plugins"
       shell: |
         source ~/.asdf/asdf.sh
