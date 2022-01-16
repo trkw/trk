@@ -16,11 +16,6 @@
         name: ansible
         state: latest
 
-    - name: asdf git clone
-      command: git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-      ignore_errors: yes
-      register: result
-
     - name: "Create a default asdf configuration"
       template:
         src: templates/.asdfrc.j2
