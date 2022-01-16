@@ -37,7 +37,7 @@ This script will install the following:
 
 And run ansible-playbook [`~/.trk/ansible/mac.yml`](https://github.com/trkw/trk/blob/main/ansible/mac.yml)
 
-- ~/.dash/ansible/mac.yml
+- ~/.trk/ansible/mac.yml
   - Update Homebrew, ansible
   - Install or Update homebrew/cask, homebrew/bundle, mas-cli/mas
   - (Optional)run ansible-playbook.
