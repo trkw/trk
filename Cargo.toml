@@ -9,7 +9,7 @@ path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
-pulldown-cmark = "0.9"
+pulldown-cmark = "0.12.2"
 rss = "2.0"
 tera = "1.19"
 walkdir = "2.4"
@@ -17,7 +17,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.9"
 chrono = { version = "0.4", features = ["serde"] }
 anyhow = "1.0"
-notify = "5.1"
+notify = "8.0.0"
 tokio = { version = "1.0", features = ["full"] }
 warp = "0.3"
 futures = "0.3"
