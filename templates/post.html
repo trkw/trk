@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml">
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>{{ title }}</h1>
+        <time datetime="{{ date }}">{{ date }}</time>
+        <div class="content">
+            {{ content | safe }}
+        </div>
+    </article>
+    <footer>
+        <p><a href="/">← Back home</a></p>
+    </footer>
+</body>
+</html>

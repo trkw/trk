@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml">
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-item {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memo</h1>
+    <ul class="post-list">
+    {% for post in posts %}
+        <li class="post-item">
+            <h2>
+                <a href="{{ post.slug }}.html">{{ post.front_matter.title }}</a>
+            </h2>
+            <time datetime="{{ post.front_matter.date }}">
+                {{ post.formatted_date }}
+            </time>
+            {% if post.front_matter.description %}
+                <p>{{ post.front_matter.description }}</p>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    <footer>
+        <p><a href="/feed.xml">RSS Feed</a></p>
+    </footer>
+</body>
+</html>
